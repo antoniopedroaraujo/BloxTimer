@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Comfortaa&family=K2D:wght@300&family=Luckiest+Guy&display=swap');
+       body {
+        background-color: rgb(66, 66, 66);
+        height: 100vh;
+        width: 90vw;
+        max-width: 1000px;
+        margin: auto;
+
+       }
+       
+       h1 {
+        font-family: 'Luckiest Guy', cursive;
+        font-size: 1.8em;
+        text-shadow: 2px 3px 0px rgb(0, 0, 0);
+        text-align: center;
+        padding-top: 1vh;
+        padding-bottom: 1vh;
+        margin-top: 3px;
+        margin-bottom: 3px;
+        margin-left: 5vw;
+        margin-right: 5vw;
+        background-color: darkgray;
+        border-radius: 20px;
+       }
+       h1.moon {
+        color: white;
+       }
+       h1.fruit {
+        color: rgb(0, 172, 0);
+       }
+       h1.fruitw {
+        color: rgb(0, 140, 255);
+       }
+       h1.pirate {
+        color: rgb(255, 0, 0);
+       }
+       h1.god {
+        color: rgba(255, 187, 0, 0.986);
+       }
+       h2 {
+        font-family: 'Comfortaa', sans-serif;
+        text-align: center;
+        color: white;
+       }
+       p {
+        color: white;
+        font-size: 1.5em;
+        text-align: center;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        margin-top: 3px;
+        margin-bottom: 3px;
+        font-family: 'Comfortaa', sans-serif;
+        text-shadow: 2px 2px 1px black;
+       }
+       input {
+        height: 40px;
+        width: 80px;
+        margin-left: 50%;
+        transform: translate(-50%,-50%);
+        border-radius: 10px;
+       }
+    </style>
+</head>
+<body>
+        <label for="ihour"><p>Hours</p></label><br>
+        <input type="number" id="ihour" name="hour" min="0" max="23" required><br>
+        <label for="imin"><p>Minutes</p></label><br>
+        <input type="number" id="imin" name="min" min="0" max="59" required><br>
+        <input type="submit" value="Create List" onclick="calc()"><br>
+    <div id="list"></div>
+    <script>
+        function calc() {
+            var ha = window.document.getElementById('ihour')
+            var ma = window.document.getElementById('imin')
+            var h = Number.parseInt(ihour.value)
+            var m = Number.parseInt(imin.value)
+            var list = window.document.getElementById('list')
+             
+        /*
+        var h = Number.parseInt(window.prompt('Insert the hour the server started. Example: 09h:30m -> 09'))
+        var m = Number.parseInt(window.prompt('Insert the minutes the server started. Example: 09h:30m -> 30'))
+        */
+       if (isNaN(h)==true||isNaN(m)==true) {
+        window.alert('deixou em branco')
+       }else if (h>23||h<0) {
+        window.alert('errou as horas')
+       }else if (m>59||m<0) {
+        window.alert('errou os minutos')
+       } else {
+        var fwm=m+45>59?m-15:m+45
+        var fwha=m+45>59?h+1:h
+        var fwh=fwha>23?fwha-24:fwha
+        var fmm=m+50>59?m-10:m+50
+        var fmha=m+50>59?h+1:h
+        var fmh=fmha>23?fmha-24:fmha
+        var fh=h+1>23?h-23:h+1
+
+        var prm=m+15>59?m-45:m+15
+        var prha=m+15>59?h=2:h+1
+        var prh=prha>23?prha-24:prha
+        var fwm2=m+30>59?m-30:m+30
+        var fwh2a=m+30>59?h+2:h+1
+        var fwh2=fwha>23?fwh2a-24:fwh2a
+        var fh2=h+2>23?h-22:h+2
+
+        var prm2=fwm2
+        var prh2a=m+30>59?h+3:h+2
+        var prh2=prh2a>23?prh2a-24:prh2a
+        var prm3=fwm
+        var prh3a=m+45>59?h+4:h+3
+        var prh3=prh3a>24?prh3a-24:prh3a
+        var gch=h+4>23?h-20:h+4
+        
+        
+        list.innerHTML = `<h2>Server started: ${h}h:${m}m</h2><h1 class="fruitw">Fruit Spawn(Weekend)</h1><p>*${fwh} h ${fwm} m</p><h1 class="moon">Lua Meia-Noite kkkk</h1><p>* ${fmh} h ${fmm} m</p><h1 class="fruit">Fruit Spawn(Monday-Friday)</h1><p>* ${fh} h ${m} m</p><h1 class="pirate">Pirate Raid</h1><p>* ${prh} h ${prm} m</p><h1 class="fruitw">Fruit Spawn(Weekend)</h1><p>*${fwh2} h ${fwm2} m</p><h1 class="fruit">Fruit Spawn(Monday-Friday)</h1><p>*${fh2} h ${m} m</p><h1 class="pirate">Pirate Raid</h1><p>* ${prh2} h ${prm2} m (+extra time)</p><h1 class="pirate">Pirate Raid</h1><p>*${prh3}h ${prm3}m(+extra time)</p><h1 class="god">God Chalice Chest</h1><p>* ${gch} h ${m} m</p>`
+       }
+       
+    }
+    </script>   
+</body>
+</html>
